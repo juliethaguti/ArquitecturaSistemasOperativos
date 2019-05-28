@@ -1,0 +1,17 @@
+Clase 27 de mayo
+
+Programación bash
+
+nano aaa.sh y sale con ctrl x, $dialog para programar $zenety para la parte grafica.
+Varible de entorno
+echo ${PWD} Traer contenido
+declarar PATH 
+PATH={PATH}:/bbb
+
+{USER} TRAE EL NOMBRE DE USUARIO
+COLORES echo -e '\033[0;31mHola...
+echo -e ${ROJO}'Hola'
+
+Opciones para archivo
+
+Comillas inclinadas(tildes) ejecutan y devuelven el valor
