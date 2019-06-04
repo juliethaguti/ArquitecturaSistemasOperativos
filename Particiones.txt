@@ -1,0 +1,34 @@
+Agregar dos discos de 100
+
+Configuracion
+almacenamiento
+controlador sata
+agregar disco duro
+
+reiniciar maquina
+
+mirar si agrego los discos: ls -l /dev/sd*
+
+otra forma muestra hasta los demonios: dmesg | more
+
+Particiones 
+sudo su -
+para ver las particiones que hay fdisk -l /dev/sda
+1.  fdisk /dev/sda
+Ver el estado de las particiones, información, etc : p
+(poner q si no funciona)
+Crear una partición con la letra: n
+p
++10MB
+luego ver con: p
+Borrar las particiones: d
+elegir la que quiere borrar
+
+cambiar tipo de particion: t
+ver todo tipo de particiones : L
+8e
+fd
+
+
+Primarias tiene que haber 4 si o si y a partir de la 4 hacer la extendida
+va haber tabla de particiones
