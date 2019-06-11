@@ -1,0 +1,66 @@
+Parcial 1 julio
+
+LVM
+
+Con la máquina virtual apagada, conficuración, almacenamiento, sata, crear disco duro, crear nuevo
+disco...
+
+En terminal: sudo su -
+ls -l /dev/sd* // Vemos los discos creados
+
+Particionar... Hasta 4 primarias, puede ser 3 primarias y cuarta extendida
+
+fdisk /dev/sdb //sdb es el disco
+
+n
+enter hasta el final
+p //para ver la partición
+
+por defecto el tipo es 83 Linux 
+Para cambiarla:
+
+t
+8e //para la lvm
+
+q // sale
+w //grabar sin paso a atras
+
+Para ver como quedo, sin necesidad de entrar
+
+fdisk -l /dev/sdb
+
+Para eliminar una partición d y el numero de partición.
+
+
+pvcreate /dev/sdb1 /dev/sdc1 // Crea los volumenes físicos del lvm
+pvs //para ver
+
+Crear un grupo
+vgcreate vg1 /dev/sdb1
+vgcreate vg2 /dev/sdc1
+
+pvs 
+
+vgs
+
+vgremove //para borrarlo 
+vgextend vg2 /dev/sdb1 //para extenderlo
+
+Crear los volumenes lógicos
+
+lvcreate -l +100%FREE -n lvappa vg1 // si le pones l minuscula tienes que indicarle que parte del espacio utilizar en porcentaje
+
+lvcreate -l +100%FREE -n lvappb vg2 // Si tienes L mayuscula tienes que  indicarle el tamaño
+
+mkfs.ext4 /dev/vg1/lvappa
+mkfs.ext4 /dev/vg2/lvappb //Para formatearlo, hay que hacerlo aunque el tp no diga
+
+mkdir /appa /appb
+
+mount /dev/vg1/lvappa /appa
+mount /dev/vg2/lvappb /appb
+
+cd /appa
+
+ls -l
+
